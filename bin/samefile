@@ -9,19 +9,19 @@
 #     license: GNU Affero General Public License v3.0 or later
 
 main() {
-# find if two files refer to the device and inode numbers
-# usage: samefile [-v|--verbose] file1 file2
-# return 0 if they match
-if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
-  set -x
-  shift
-fi
+  # find if two files refer to the device and inode numbers
+  # usage: samefile [-v|--verbose] file1 file2
+  # return 0 if they match
+  if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
+    set -x
+    shift
+  fi
 
-# stat
-#   `-L` to dereference symbolic links # https://superuser.com/a/196655
-#   `-c` to display %d for device and
-#                   %i for inode
-[ "$(stat -L -c %d:%i "${1}")" = "$(stat -L -c %d:%i "${2}")" ] && return 0 || return 1
-{ set +x; } 2>/dev/null
+  # stat
+  #   `-L` to dereference symbolic links # https://superuser.com/a/196655
+  #   `-c` to display %d for device and
+  #                   %i for inode
+  [ "$(stat -L -c %d:%i "${1}")" = "$(stat -L -c %d:%i "${2}")" ] && return 0 || return 1
+  { set +x; } 2>/dev/null
 
 }
