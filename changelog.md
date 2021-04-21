@@ -6,10 +6,12 @@
 
 **Fixed bugs:**
 
+- the executable has no function call [\#3](https://github.com/LucasLarson/samefile/issues/3)
 - failure doesn’t work [\#1](https://github.com/LucasLarson/samefile/issues/1)
 
 **Merged pull requests:**
 
+- add function call to executable \(\#3\) [\#4](https://github.com/LucasLarson/samefile/pull/4) ([LucasLarson](https://github.com/LucasLarson))
 - move executable’s contents into function \(\#1\) [\#2](https://github.com/LucasLarson/samefile/pull/2) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v1.0.0](https://github.com/LucasLarson/samefile/tree/v1.0.0) (2021-04-14)
