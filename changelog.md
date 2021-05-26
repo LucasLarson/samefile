@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Update github/super-linter action to v4 [\#12](https://github.com/LucasLarson/samefile/pull/12) ([renovate[bot]](https://github.com/apps/renovate))
 - add function call to executable \(\#3\) [\#4](https://github.com/LucasLarson/samefile/pull/4) ([LucasLarson](https://github.com/LucasLarson))
 - move executable’s contents into function \(\#1\) [\#2](https://github.com/LucasLarson/samefile/pull/2) ([LucasLarson](https://github.com/LucasLarson))
 
