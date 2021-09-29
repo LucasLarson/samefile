@@ -9,8 +9,13 @@
 - the executable has no function call [\#3](https://github.com/LucasLarson/samefile/issues/3)
 - failure doesn’t work [\#1](https://github.com/LucasLarson/samefile/issues/1)
 
+**Closed issues:**
+
+- `actions/setup-ruby` is deprecated [\#5](https://github.com/LucasLarson/samefile/issues/5)
+
 **Merged pull requests:**
 
+- replace deprecated `actions/setup-ruby` with `ruby/setup-ruby` \(fix \#5\) [\#14](https://github.com/LucasLarson/samefile/pull/14) ([LucasLarson](https://github.com/LucasLarson))
 - Update github/super-linter action to v4 [\#12](https://github.com/LucasLarson/samefile/pull/12) ([renovate[bot]](https://github.com/apps/renovate))
 - add function call to executable \(\#3\) [\#4](https://github.com/LucasLarson/samefile/pull/4) ([LucasLarson](https://github.com/LucasLarson))
 - move executable’s contents into function \(\#1\) [\#2](https://github.com/LucasLarson/samefile/pull/2) ([LucasLarson](https://github.com/LucasLarson))
