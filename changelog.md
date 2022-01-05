@@ -11,6 +11,7 @@
 
 **Closed issues:**
 
+- Action Required: Fix Renovate Configuration [\#16](https://github.com/LucasLarson/samefile/issues/16)
 - `actions/setup-ruby` is deprecated [\#5](https://github.com/LucasLarson/samefile/issues/5)
 
 **Merged pull requests:**
