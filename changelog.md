@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- bump actions/checkout from v2 to v3 [\#17](https://github.com/LucasLarson/samefile/pull/17) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace deprecated `actions/setup-ruby` with `ruby/setup-ruby` \(fix \#5\) [\#14](https://github.com/LucasLarson/samefile/pull/14) ([LucasLarson](https://github.com/LucasLarson))
 - Update github/super-linter action to v4 [\#12](https://github.com/LucasLarson/samefile/pull/12) ([renovate[bot]](https://github.com/apps/renovate))
 - add function call to executable \(\#3\) [\#4](https://github.com/LucasLarson/samefile/pull/4) ([LucasLarson](https://github.com/LucasLarson))
