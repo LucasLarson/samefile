@@ -17,48 +17,70 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1.0
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-      - name: Create local changes
+      - name: Install `github_changelog_generator`
         run: |
           command gem install github_changelog_generator
+      - name: Install `markdownlint`
+        run: |
+          command npm install markdownlint
+          command npm install markdownlint-cli
+      - name: Build and commit changelog
+        run: |
+          file="$(
+            (
+              command find -- . \
+                -maxdepth 1 \
+                -type f \
+                -name '*.m*d*' \
+                '(' \
+                -name 'change*log*' -o \
+                -name 'CHANGE*LOG*' \
+                ')' \
+                -print &
+            ) |
+              # print only the first match
+              command head -n 1
+          )"
+          # define changelog location if none is found
+          file="${file:=./changelog.md}"
+          # ensure the file exists
+          command touch -- "${file-}"
+          # trim the initial `./` for `github_changelog_generator`
+          file="${file#*[.][/]}"
+          # create local changes
           command github_changelog_generator \
             --user "$(
-              command git config --get-regexp -- 'remote.*url' |
-                command sed -E -e 's/(git@|https:..)//' |
-                command sed -e 's/:/\//' |
-                command sed -e 's/\.git$//' |
-                command awk -F '/' '{print $2}' |
-                LC_ALL='C' command sort -u
+              command git ls-remote --get-url |
+                command sed -E \
+                  -e 's/(git@|(git|https?|ssh):\/\/)//' \
+                  -e 's/:/\//' \
+                  -e 's/[^\/]*\/([^\/]*)\/.*/\1/'
             )" \
             --project "$(
-              command git remote get-url "$(
-                {
-                  command git config --get --worktree checkout.defaultRemote ||
-                    command git config --get --local checkout.defaultRemote ||
-                    command git config --get --system checkout.defaultRemote ||
-                    command git config --get --global checkout.defaultRemote ||
-                    printf "origin\n"
-                } 2>/dev/null
-              )" |
-                command tr -d "[:space:]" |
-                command xargs basename |
-                command sed -e "s|.git$||"
+              command git ls-remote --get-url |
+                command sed \
+                  -e 's/.*\///' \
+                  -e 's/\.git$//'
             )" \
             --token ${{ secrets.GITHUB_TOKEN || secrets.PAT }} \
-            --exclude-labels duplicate,question,invalid,wontfix,nodoc \
-            --output changelog.md
-      - name: Commit files
-        run: |
+            --exclude-labels 'duplicate,question,invalid,wontfix,nodoc' \
+            --output "${file-}"
+          # repair changelog credit
+          command sed \
+            -e 's/This Changelog/This changelog/' \
+            -e 's/automatically generated/\[automatically generated\]()/' \
+            -e 's/\]()/\](.\/.github\/workflows\/changelog.yml)/' \
+            -e 's/generator)\*/generator).\*/' \
+            ./"${file-}" >./"${file%.*}"_temporary_"${file##*.}" &&
+            command mv -f -- ./"${file%.*}"_temporary_"${file##*.}" ./"${file-}"
+          # lint changelog
+          command npm exec -- markdownlint --fix -- ./"${file-}" ||
+            :
+          # commit files
           command git config -- user.email 'actions@github.com'
           command git config -- user.name 'GitHub'
-          command git add --verbose --all
-          command git commit --verbose \
-            --message='update changelog' ||
+          command git add --verbose -- ./"${file-}"
+          command git commit --verbose --message='update changelog' ||
             exit 0
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
