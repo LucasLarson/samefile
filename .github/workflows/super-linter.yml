@@ -1,23 +1,26 @@
 ---
-#################################
-#################################
-## Super-Linter GitHub Actions ##
-#################################
-#################################
+#########################
+#########################
+## GitHub Super-Linter ##
+#########################
+#########################
 name: Super-Linter
-
-#
-# Documentation:
-# https://help.github.com/en/articles/workflow-syntax-for-github-actions
-#
+# https://bit.ly/git-io_workflow-syntax-for-github-actions
 
 #############################
 # Start the job on all push #
 #############################
 on:
   push:
-  pull_request:
-    branches: [main]
+
+#####################################
+# Cancel any in-progress job or run #
+#####################################
+# https://github.com/kdeldycke/workflows/commit/8bee3ba877
+# https://docs.github.com/actions/using-jobs/using-concurrency
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
 
 ###############
 # Set the Job #
@@ -39,7 +42,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
-          # Full history is needed to analyze changed files
+          # Super-Linter requires full repository history for analysis
           fetch-depth: 0
 
       ################################
@@ -50,4 +53,5 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
+          # Super-Linter requires this variable even if it is unset
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
