@@ -59,5 +59,5 @@ are
 1. the same exact inode values.
 
 But only `samefile` properly runs on a maximally portable POSIX-conformant
-interpreter at `printf '%s\n' "$(command -v -- sh)"`. `samefile` works just
-fine in Bash environments, too.
+interpreter where `stat` is also installed. `samefile` works just fine in Bash
+environments, too.
