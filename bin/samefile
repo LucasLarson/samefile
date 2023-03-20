@@ -23,7 +23,7 @@ main() {
   #                                 %i for inode
   #   `-f` for BSD/macOS to display %d for device and
   #                                 %i for inode
-  if command stat -L -c '%d:%i' -- . >/dev/null 2>&1; then
+  if stat -L -c '%d:%i' -- . >/dev/null 2>&1; then
     argument='-c'
   else
     argument='-f'
