@@ -6,6 +6,7 @@
 
 **Fixed bugs:**
 
+- GNU `stat -c` is macOS/FreeBSD `stat -f` [\#22](https://github.com/LucasLarson/samefile/issues/22)
 - `git.io` deprecation [\#20](https://github.com/LucasLarson/samefile/issues/20)
 - the executable has no function call [\#3](https://github.com/LucasLarson/samefile/issues/3)
 - failure doesn’t work [\#1](https://github.com/LucasLarson/samefile/issues/1)
@@ -17,6 +18,7 @@
 
 **Merged pull requests:**
 
+- permit macOS/FreeBSD `stat` syntax [\#23](https://github.com/LucasLarson/samefile/pull/23) ([LucasLarson](https://github.com/LucasLarson))
 - remove `git.io` links \(fix \#20\) [\#21](https://github.com/LucasLarson/samefile/pull/21) ([LucasLarson](https://github.com/LucasLarson))
 - bump actions/cache from v2 to v3 [\#18](https://github.com/LucasLarson/samefile/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump actions/checkout from v2 to v3 [\#17](https://github.com/LucasLarson/samefile/pull/17) ([dependabot[bot]](https://github.com/apps/dependabot))
