@@ -19,9 +19,16 @@ main() {
 
   # stat
   #   `-L` to dereference symbolic links # https://superuser.com/a/196655
-  #   `-c` to display %d for device and
-  #                   %i for inode
-  [ "$(stat -L -c %d:%i "${1}")" = "$(stat -L -c %d:%i "${2}")" ] && return 0 || return 1
+  #   `-c`       for GNU to display %d for device and
+  #                                 %i for inode
+  #   `-f` for BSD/macOS to display %d for device and
+  #                                 %i for inode
+  if stat -L -c '%d:%i' -- . >/dev/null 2>&1; then
+    argument='-c'
+  else
+    argument='-f'
+  fi
+  [ "$(stat -L "${argument-}" %d:%i "${1}" 2>/dev/null)" = "$(stat -L "${argument-}" %d:%i "${2}")" ] && return 0 || return 1
   { set +x; } 2>/dev/null
 
 }
