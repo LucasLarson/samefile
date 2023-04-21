@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- bump github/super-linter from 4 to 5 [\#24](https://github.com/LucasLarson/samefile/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 - permit macOS/FreeBSD `stat` syntax [\#23](https://github.com/LucasLarson/samefile/pull/23) ([LucasLarson](https://github.com/LucasLarson))
 - remove `git.io` links \(fix \#20\) [\#21](https://github.com/LucasLarson/samefile/pull/21) ([LucasLarson](https://github.com/LucasLarson))
 - bump actions/cache from v2 to v3 [\#18](https://github.com/LucasLarson/samefile/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
