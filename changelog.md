@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- bump ad-m/github-push-action from v0.6.0 to v0.8.0 [\#28](https://github.com/LucasLarson/samefile/pull/28) ([renovate[bot]](https://github.com/apps/renovate))
 - bump actions/checkout from 3 to 4 [\#27](https://github.com/LucasLarson/samefile/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump github/super-linter from 4 to 5 [\#24](https://github.com/LucasLarson/samefile/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 - permit macOS/FreeBSD `stat` syntax [\#23](https://github.com/LucasLarson/samefile/pull/23) ([LucasLarson](https://github.com/LucasLarson))
