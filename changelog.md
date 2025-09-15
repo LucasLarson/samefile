@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): bump ad-m/github-push-action from v0.8.0 to v1.0.0 [\#33](https://github.com/LucasLarson/samefile/pull/33) ([renovate[bot]](https://github.com/apps/renovate))
 - bump ad-m/github-push-action from v0.6.0 to v0.8.0 [\#28](https://github.com/LucasLarson/samefile/pull/28) ([renovate[bot]](https://github.com/apps/renovate))
 - bump actions/checkout from 3 to 4 [\#27](https://github.com/LucasLarson/samefile/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump github/super-linter from 4 to 5 [\#24](https://github.com/LucasLarson/samefile/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
