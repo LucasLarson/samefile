@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/LucasLarson/samefile/compare/v1.0.0...HEAD)
 
+**Implemented enhancements:**
+
+- fix: use portable `ls -i` instead of `stat -L` [\#36](https://github.com/LucasLarson/samefile/pull/36) ([LucasLarson](https://github.com/LucasLarson))
+
 **Fixed bugs:**
 
 - GNU `stat -c` is macOS/FreeBSD `stat -f` [\#22](https://github.com/LucasLarson/samefile/issues/22)
