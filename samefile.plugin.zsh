@@ -8,5 +8,4 @@
 #     URL: https://github.com/LucasLarson/samefile
 #     license: GNU Affero General Public License v3.0 or later
 #
-PATH=${PATH}:$(dirname "${0}")/bin
-export PATH
+export PATH="${0%/*}"'/bin'"${PATH:+:${PATH-}}"

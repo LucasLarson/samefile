@@ -12,25 +12,39 @@ main() {
   # find if two files refer to the device and inode numbers
   # usage: samefile [-v|--verbose] file1 file2
   # return 0 if they match
-  if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
+
+  # known limitations: does not check that the files are on the same device,
+  # only that their inodes match
+
+  if test "${1-}" = '-v' || test "${1-}" = '--verbose'; then
     set -x
     shift
   fi
 
-  # stat
-  #   `-L` to dereference symbolic links # https://superuser.com/a/196655
-  #   `-c`       for GNU to display %d for device and
-  #                                 %i for inode
-  #   `-f` for BSD/macOS to display %d for device and
-  #                                 %i for inode
-  if stat -L -c '%d:%i' -- . >/dev/null 2>&1; then
-    argument='-c'
-  else
-    argument='-f'
-  fi
-  [ "$(stat -L "${argument-}" %d:%i "${1}" 2>/dev/null)" = "$(stat -L "${argument-}" %d:%i "${2}")" ] && return 0 || return 1
-  { set +x; } 2>/dev/null
+  # ls
+  #   `-1` for single-column output
+  #   `-L` to dereference symbolic links
+  #   `-i` to display the file serial number
 
+  # ensure there are exactly two arguments
+  command -p -- test "${#}" -eq 2 &&
+
+    # print the inode and location of both files
+    LC_ALL='C' IFS='' command -p -- ls -1 -L -i -- "${1-}" "${2-}" |
+
+    # if the inode is unique, then print the row number:
+    # (output is 1 for identical inodes and 12 for two unique inodes)
+    # then add a trailing newline to output so that `grep` can read it
+    LC_ALL='C' IFS='' command awk -- '! seen[$1]++ {
+  printf NR
+}
+END {
+  printf "\n"
+}' |
+
+      # use quieted and inverted grep to set the return value
+      # (return 0 if the output was 1 and return 1 if the output, 12, included a 2)
+      LC_ALL='C' IFS='' command -p -- grep -v -e '2' >/dev/null 2>&1
 }
 
-main "${@}"
+main "${@-}"
