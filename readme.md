@@ -54,10 +54,5 @@ samefile -v path/to/some/file path/to/another/file
 Bash’s `-ef` and `samefile` both check that two files aren’t just similar, but
 are
 
-1. the same exact file on
-1. the same exact machine and have
+1. the same exact file and have
 1. the same exact inode values.
-
-But only `samefile` properly runs on a maximally portable POSIX-conformant
-interpreter where `stat` is also installed. `samefile` works just fine in Bash
-environments, too.
