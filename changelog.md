@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): bump ruby from 3.1.0 to 3.4.7 [\#34](https://github.com/LucasLarson/samefile/pull/34) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): bump super-linter from v5 to v7 [\#30](https://github.com/LucasLarson/samefile/pull/30) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v1.1.0](https://github.com/LucasLarson/samefile/tree/v1.1.0) (2025-12-03)
