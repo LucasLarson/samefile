@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/LucasLarson/samefile/tree/HEAD)
 
-[Full Changelog](https://github.com/LucasLarson/samefile/compare/v1.0.0...HEAD)
+[Full Changelog](https://github.com/LucasLarson/samefile/compare/v1.1.0...HEAD)
+
+**Merged pull requests:**
+
+- chore\(deps\): bump super-linter from v5 to v7 [\#30](https://github.com/LucasLarson/samefile/pull/30) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v1.1.0](https://github.com/LucasLarson/samefile/tree/v1.1.0) (2025-12-03)
+
+[Full Changelog](https://github.com/LucasLarson/samefile/compare/v1.0.0...v1.1.0)
 
 **Implemented enhancements:**
 
